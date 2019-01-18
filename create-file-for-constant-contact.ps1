@@ -83,7 +83,34 @@ foreach ($address in $emailArray) {
         } else {}
         
     }
-    
+        foreach ($record in $csv3) {
+        
+        if ($address -eq $record.email) {
+            if ($address -in $objectArray.email) {
+
+                $index = $objectArray.email.IndexOf($address)
+
+                if ($objectArray[$index].tags -notmatch $record.grade) {
+                    #add grade to tags
+                    $objectArray[$index].tags = $objectArray[$index].tags + ", " + $record.grade
+                } else {}
+                if ($objectArray[$index].tags -notmatch $record.school) {
+                    #add school to tags
+                    $objectArray[$index].tags = $objectArray[$index].tags + ", " + $record.school
+                } else {}
+
+            } else {
+
+                $a = "" | select email, tags
+                $a.email = $address
+                $a.tags = $record.grade + ", " + $record.school
+                
+                $objectArray += $a
+
+            }
+        } else {}
+        
+    }
 }
 
 $objectArray | Export-Csv -Path $exportPath -NoTypeInformation
