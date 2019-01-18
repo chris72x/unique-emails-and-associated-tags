@@ -7,6 +7,7 @@ $exportPath = "C:\<your path here>\book4.csv"
 # Import files
 $csv1 = Import-Csv $file1
 $csv2 = Import-Csv $file2
+$csv3 = Import-Csv $file3
 
 
 # Create array of all email addresses
@@ -14,6 +15,7 @@ $emailArray = @()
 
 foreach ($_ in $csv1) {$emailArray += $_.email}
 foreach ($_ in $csv2) {$emailArray += $_.email}
+foreach ($_ in $csv3) {$emailArray += $_.email}
 
 # Keep only unique email addresses
 $emailArray = ($emailArray | Select-Object -Unique)
