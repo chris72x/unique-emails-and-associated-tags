@@ -4,7 +4,7 @@ $file3 = "C:\<your path here>\book3.csv"
 $exportPath = "C:\<your path here>\book4.csv"
 
 
-# Import files
+# Import files...
 $csv1 = Import-Csv $file1
 $csv2 = Import-Csv $file2
 $csv3 = Import-Csv $file3
